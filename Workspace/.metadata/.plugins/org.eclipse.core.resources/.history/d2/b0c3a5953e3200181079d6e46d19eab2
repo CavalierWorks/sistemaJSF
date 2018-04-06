@@ -1,0 +1,12 @@
+package br.com.farmacia.bean;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.model.ListDataModel;
+
+@ManagedBean(name = "MBFornecedores")
+@ViewScoped
+public class FornecedoresBean {
+	private ListDataModel<Fornecedores>itens;
+
+}

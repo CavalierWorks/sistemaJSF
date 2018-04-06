@@ -1,0 +1,22 @@
+
+public class Retorno {
+	
+	public int valor;
+	public String nome;
+	
+	public int somar(int s) {
+		return  s + 2;		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		Retorno r1 = new Retorno();
+		
+		r1.somar(10);
+		System.out.println(r1);
+	}
+	
+
+}

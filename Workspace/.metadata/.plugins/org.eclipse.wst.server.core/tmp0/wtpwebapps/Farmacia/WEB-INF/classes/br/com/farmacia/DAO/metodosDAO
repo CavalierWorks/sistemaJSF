@@ -1,0 +1,79 @@
+METODO SALVAR - FornecedoresDAO
+
+Fornecedores f1 = new Fornecedores ();
+		f1.setDescription("Farma 1");
+		
+		FornecedoresDAO fdao = new FornecedoresDAO();
+		
+		try {
+			fdao.salvar(f1);
+			System.out.println(" ' " + f1.getDescription() + " ' " + " Salvo com Sucesso");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+
+METODO EXCLUIR - FornecedoresDAO
+
+Fornecedores f1 = new Fornecedores();
+		f1.setCodigo(13L);//REPARAR NESSA DECLARAÇÃO DE LONG!!
+		
+		FornecedoresDAO fdao = new FornecedoresDAO();
+		
+		try {
+			fdao.excluir(f1);
+			System.out.println(" Excluido com Sucesso");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+METODO EDITAR - FornecedoresDAO
+
+
+Fornecedores f1 = new Fornecedores();
+		f1.setCodigo(1L);//REPARAR NESSA DECLARAÇÃO DE LONG!!
+		f1.setDescription("Pfizer");
+		
+		FornecedoresDAO fdao = new FornecedoresDAO();
+		
+		try {
+			fdao.editar(f1);
+			System.out.println("Editado com Sucesso");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+
+METODO BUSCA POR CODIGO
+
+Fornecedores f1 = new Fornecedores();
+		f1.setCodigo(4);
+		//reparar essa declaração de Long!
+		
+		
+		FornecedoresDAO fdao = new FornecedoresDAO();
+		
+		try {
+			Fornecedores f3 = fdao.buscaPorCodigo(f1);
+			fdao.buscaPorCodigo(f1);
+			System.out.println("Resultado da busca: Empresa " + f3);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+METODO LISTAR
+
+FornecedoresDAO fdao = new FornecedoresDAO();
+
+		try {
+			ArrayList<Fornecedores> lista = fdao.listar();
+			for (Fornecedores f : lista) {
+				System.out.println("Resultado" + f);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao buscar!");
+
+		}
+
+		

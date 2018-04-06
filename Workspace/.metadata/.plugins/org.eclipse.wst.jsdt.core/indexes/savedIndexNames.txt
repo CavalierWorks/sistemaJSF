@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/home/cavalier/Conteudo do curso - Sistema Farmacia/Sistema NOVO/Workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1386751556.index
+3270870926.index
+1588426863.index
+453965316.index
+431730414.index
+2550288050.index
+1472723960.index
+4236027091.index

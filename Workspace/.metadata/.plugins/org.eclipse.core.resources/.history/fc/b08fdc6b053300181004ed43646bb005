@@ -1,0 +1,26 @@
+
+public class Retorno {
+	
+
+	
+	public int somar(int s) {
+		int soma;
+		soma = s + 10;
+		return soma;
+	}	
+	
+	
+	public static void main(String[] args) {
+		Retorno r = new Retorno();
+		
+		Retorno x;
+				
+		r.somar(20);
+		
+		
+		
+		System.out.println("dale " + somar());
+	}
+	
+
+}

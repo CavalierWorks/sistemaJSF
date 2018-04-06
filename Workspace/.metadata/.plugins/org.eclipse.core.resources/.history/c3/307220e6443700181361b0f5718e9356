@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+	
+	<h:form id="frmProdutos">
+
+			<p:dataTable id="tbProdutos"
+				widgetVar="tabelaProdutos"
+				emptyMessage="Nenhum Registro Encontrado"
+				value="#{MBProduto.itens}" var="item" paginator="true"
+				filteredValue="#{MBProduto.itensfiltrados}" rows="10">
+
+				<f:facet name="header">Lista de Produtos</f:facet>
+
+				<p:column headerText="Código" sortBy="#{item.codigo}"
+					filterBy="#{item.codigo}">
+					<h:outputText value="#{item.codigo}" />
+				</p:column>
+
+				<p:column headerText="Descrição" sortBy="#{item.description}"
+					filterBy="#{item.description}">
+					<h:outputText value="#{item.description}" />
+				</p:column>
+				
+				<p:column headerText="Valor" sortBy="#{item.preco}"
+					filterBy="#{item.preco}">
+					<h:outputText value="#{item.preco}" />
+				</p:column>
+				
+				<p:column headerText="Quantidade" sortBy="#{item.quantidade}"
+					filterBy="#{item.quantidade}">
+					<h:outputText value="#{item.quantidade}" />
+					</p:column>
+					
+					<p:column headerText="Fornecedor" sortBy="#{item.fornecedores.description}"
+					filterBy="#{item.fornecedores.description}">
+					<h:outputText value="#{item.fornecedores.description}" />
+					
+				</p:column>
+
+				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-gear">
+						
+					</p:commandButton>
+
+					       <p:commandButton icon="ui-icon-trash"   
+         >
+    <f:setPropertyActionListener value="#{item}" target="#{MBProduto.produtos}"></f:setPropertyActionListener>
+    </p:commandButton>
+ 
+
+				</p:column>
+
+				<f:facet name="footer">
+					<p:commandButton value="Novo" oncomplete="PF('dlgproNovo').show();"
+					actionListener="#{MBProduto.prepararNovo}"
+					update=":frmproNovo:pnproNovo :msgGlobal"
+					 />
+				</f:facet>
+
+			</p:dataTable>
+
+		</h:form>
+			
+		<p:dialog widgetVar="dlgproNovo" closable="false" draggable="true"
+			resizable="false" header="Cadastrar Novo Produto" modal="true"
+			appendToBody="true" >
+
+			<h:form id="frmproNovo">
+				<h:panelGrid id="pnproNovo" columns="2">
+					
+						<p:outputLabel value="Descrição:" />
+					<h:inputText size="30" maxlength="50"
+						value="#{MBProduto.produtos.description}" />
+						
+						<p:outputLabel value="Preço:" />
+					<h:inputText size="15" maxlength="50"
+						value="#{MBProduto.produtos.preco}" />
+						
+						<p:outputLabel value="Quantidade:" />
+					<h:inputText size="15" maxlength="50"
+						value="#{MBProduto.produtos.quantidade}" />
+						
+						<p:outputLabel value="Fornecedor:" />
+						<p:selectOneMenu value="#{MBProduto.produtos.fornecedores.codigo}"
+						filter="true"
+						>
+						<f:selectItem itemValue="" itemLabel="Selecione um Fornecedor" />
+						<f:selectItems value="#{MBProduto.comboFornecedores}"
+						var="item"
+						itemValue="#{item.codigo}"
+						itemLabel="#{item.description}"
+						>
+						</f:selectItems>						
+						</p:selectOneMenu>
+						
+				</h:panelGrid>
+				<h:panelGrid columns="2">
+					<p:commandButton value="Gravar" actionListener="#{MBProduto.novo}"
+						oncomplete="PF('dlgproNovo').hide(); PF('tabelaProdutos').clearFilters();"
+						update=":frmProdutos:tbProdutos :msgGlobal"  />
+					<p:commandButton value="Cancelar"
+						onclick="PF('dlgproNovo').hide();" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+		
+
+		
+	
+</ui:define>
+</ui:composition>

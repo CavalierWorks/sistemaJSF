@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="br.com.farmacia.bean.ProdutoBean"/>
+<fullyQualifiedTypeName name="br.com.farmacia.domain.Produtos"/>
+<fullyQualifiedTypeName name="br.com.farmacia.DAO.ProdutoDAO"/>
+<fullyQualifiedTypeName name="br.com.farmacia.bean.FornecedoresBean"/>
+<fullyQualifiedTypeName name="br.com.farmacia.domain.Fornecedores"/>
+<fullyQualifiedTypeName name="br.com.farmacia.DAO.FornecedoresDAO"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+</qualifiedTypeNameHistroy>

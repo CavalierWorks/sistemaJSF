@@ -1,0 +1,57 @@
+package br.com.farmacia.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import br.com.farmacia.domain.Fornecedores;
+import br.com.farmacia.domain.Produtos;
+import br.com.farmacia.factory.ConexaoFactory;
+
+public class ProdutoDAO {
+	
+	public void salvar(Produtos p) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append("INSERT INTO produtos");
+		sql.append("(description, preco, quantidade, fornecedores_codigo)");
+		sql.append("VALUES (?, ?, ?, ?)");
+
+		Connection conexao = ConexaoFactory.conectar();
+
+		PreparedStatement comando = conexao.prepareStatement(sql.toString());
+		comando.setString(1, p.getDescription());
+		comando.setDouble(1, p.getPreco());
+		comando.setLong(1, p.getQuantidade());
+		comando.setLong(1, p.getFornecedores().getCodigo());
+		comando.executeUpdate();
+
+	}
+	
+	public static void main(String[] args) {
+		
+		Produtos p = new Produtos();
+		p.setDescription("REMEDIO SHOW");
+		p.setPreco(124.45);
+		p.setQuantidade(10);
+		
+		Fornecedores f = new Fornecedores();
+		f.setCodigo(5);
+		p.setFornecedores(f);
+		
+		
+		p.setFornecedores(null);
+		
+		
+		ProdutoDAO pdao = new ProdutoDAO();
+		
+		try {
+			pdao.salvar(p);
+			System.out.println(" Salvo com Sucesso");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}
